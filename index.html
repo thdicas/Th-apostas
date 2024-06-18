@@ -11,16 +11,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .container {
             background-color: #333;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            max-width: 100%;
             width: 400px;
             text-align: center;
+            box-sizing: border-box;
         }
         h1 {
             color: #FFD700;
@@ -36,7 +40,7 @@
             text-align: left;
         }
         .form-group input {
-            width: calc(100% - 12px);
+            width: 100%;
             padding: 8px;
             font-size: 16px;
             border: 1px solid #ddd;
@@ -55,6 +59,8 @@
             margin-top: 10px;
             cursor: pointer;
             border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .button:hover {
             background-color: #45a049;
@@ -75,6 +81,22 @@
             color: #fff;
             font-size: 16px;
             margin: 5px 0;
+        }
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+            .button {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .form-group input {
+                font-size: 14px;
+            }
+            .resultado p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -177,7 +199,6 @@
             document.getElementById('horarioPartidaDisplay').innerText = horarioPartida;
         }
 
-
         function gerarImagem() {
             var nomeTimeCasa = document.getElementById('timeCasa').value.trim();
             var oddsTimeCasa = parseFloat(document.getElementById('oddsCasa').value);
@@ -230,13 +251,11 @@
             janela.document.write('<html><head><title>Análise de Apostas</title></head><body></body></html>');
             janela.document.body.appendChild(divTemporaria);
 
-            
             setTimeout(function() {
                 janela.print(); // Captura a tela e abre a janela de impressão
                 janela.close(); // Fecha a janela após a captura
             }, 500); // Tempo em milissegundos
         }
-
     </script>
 </body>
 </html>
